@@ -38,7 +38,12 @@ pipeline {
         stage('Load Grafana Monitoring') {
             steps {
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/test_main/inventory', playbook: '/var/lib/jenkins/workspace/test_main/exporter.yml'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/test_main/inventory', playbook: '/var/lib/jenkins/workspace/test_main/exporter1.yml'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/test_main/inventory', playbook: '/var/lib/jenkins/workspace/test_main/exporter2.yml'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/test_main/inventory', playbook: '/var/lib/jenkins/workspace/test_main/exporter3.yml'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/test_main/inventory', playbook: '/var/lib/jenkins/workspace/test_main/exporter4.yml'
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/test_main/inventory', playbook: '/var/lib/jenkins/workspace/test_main/rexporter.yml'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/test_main/inventory', playbook: '/var/lib/jenkins/workspace/test_main/rexporter1.yml'
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/test_main/inventory', playbook: '/var/lib/jenkins/workspace/test_main/grafana.yml'
             }
         }
