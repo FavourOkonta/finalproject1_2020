@@ -19,7 +19,20 @@
 [exporter]
 10.7.1.110
 
+[exporter1]
+10.7.2.180
+
+[exporter2]
+10.7.3.45
+
+[exporter3]
+10.7.4.72
+
+[exporter4]
+10.7.5.104
 
 [rexporter]
 10.7.3.45
+
+[rexporter1]
 10.7.5.104
