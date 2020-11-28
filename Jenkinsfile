@@ -10,6 +10,7 @@ pipeline {
         stage('Adding to Key Ring') {
             steps {
                 sh 'eval `ssh-agent -s`'
+                sh 'sudo ansible-galaxy collection install community.general'
             }
         }
         stage('Build Image') {
