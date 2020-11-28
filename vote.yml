@@ -1,0 +1,21 @@
+---
+- hosts: app-server1
+  vars:
+    app:
+      - REDIS: 10.7.3.45
+      - REDIS_PORT: 6379
+      - REDIS_PWD: redis
+  tasks:
+    - name: simple ping
+      ping:
+    - name: start Docker service
+      service:
+        name: docker
+        state: started
+      become: true
+    - name: Pull an Image
+      community.general.docker_image:
+        name: favourokonta/votingapp
+        source: pull
+    - name: Run Docker Command
+      command: docker run -d -p 80:80 -e REDIS=10.7.3.45 -e REDIS_PORT=6379  -e REDIS_PWD=redis --name vote favourokonta/votingapp

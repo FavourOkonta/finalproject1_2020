@@ -1,0 +1,25 @@
+---
+- hosts: database-server1
+  tasks:
+    - name: simple ping
+      ping:
+    - name: start Docker service
+      service:
+        name: docker
+        state: started
+      become: true
+    - name: Copy Redis Configuration file
+      copy:
+        src: redis.conf
+        dest: ~/
+        mode: '0777'
+    - name: Run Redis container
+      community.general.docker_container:
+        name: Redis
+        image: redis
+        volumes:
+          - ./redis.conf:/etc/redis/redis.conf
+        ports:
+          - "6379:6379"
+        command: redis-server /etc/redis/redis.conf
+        restart: yes

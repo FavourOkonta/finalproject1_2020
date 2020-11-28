@@ -1,0 +1,17 @@
+---
+- hosts: database-server1
+  tasks:
+    - name: simple ping
+      ping:
+    - name: start docker service
+      service:
+        name: docker
+        state: started
+      become: true
+    - name: Pull an image
+      community.general.docker_image:
+        name: redis
+        source: pull
+    - name: Run Redis command
+      command: docker run -d -p 6379:6379   -e REDIS_PASSWORD=redis --name redis redis /bin/sh -c 'redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}'
+

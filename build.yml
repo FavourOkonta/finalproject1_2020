@@ -1,0 +1,27 @@
+---
+- hosts: monitoring
+  tasks:
+    - name: simple ping
+      ping:
+    - name: start docker service
+      service:
+        name: docker
+        state: started
+      become: true
+    - name: build container image
+      community.general.docker_image:
+        name: favour
+        build:
+          path: ./finalproject1_2020
+        source: build
+        state: present
+    - name: Log into DockerHub
+      community.general.docker_login:
+        username: favourokonta
+        password: abby_jibril
+    - name: Tag and push to docker hub
+      community.general.docker_image:
+        name: favour
+        repository: favourokonta/votingapp
+        push: yes
+        source: local

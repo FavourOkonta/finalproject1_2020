@@ -1,0 +1,19 @@
+---
+- hosts: rexporter
+  tasks:
+    - name: simple ping
+      ping:
+    - name: start Docker service
+      service:
+        name: docker
+        state: started
+      become: true
+    - name: Run Redis-Exporter container
+      community.general.docker_container:
+        name: Redis-exporter
+        image: oliver006/redis_exporter
+        ports:
+          - "9121:9121"
+        restart: yes
+
+
