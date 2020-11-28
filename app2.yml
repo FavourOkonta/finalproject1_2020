@@ -13,7 +13,7 @@
         name: vote
         image: favourokonta/votingapp
         env:
-          REDIS: 10.7.5.104
+          REDIS: 10.7.3.45
           REDIS_PORT: "6379"
           REDIS_PWD: redis
         ports:
