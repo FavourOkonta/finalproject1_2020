@@ -10,7 +10,6 @@ pipeline {
         stage('Adding to Key Ring') {
             steps {
                 sh 'eval `ssh-agent -s`'
-                sh 'ssh-add ~/crossovertest.pem'
             }
         }
         stage('Build Image') {
