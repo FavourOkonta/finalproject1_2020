@@ -18,7 +18,7 @@
     - name: Log into DockerHub
       community.general.docker_login:
         username: favourokonta
-        password: abby_jibril
+        password: 
     - name: Tag and push to docker hub
       community.general.docker_image:
         name: favour
